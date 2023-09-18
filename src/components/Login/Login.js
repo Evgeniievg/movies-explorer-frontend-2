@@ -13,6 +13,8 @@ export default function Login() {
     buttonText="Войти"
     question="Ещё не зарегистрированы?"
     linkText="Регистрация"
+    inputMinLength={[2, 8]}
+    inputMaxLength={[256, 30]}
     />
   )
 }

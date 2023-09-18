@@ -15,7 +15,7 @@ function Promo() {
             чтобы узнать больше про этот проект и его создателя.</p>
           </div>
         </div>
-          <button className='promo__button'><a href='#about-project' className='promo__link'>Узнать больше</a></button>
+        <a href='#about-project' className='promo__link'>Узнать больше</a>
       </div>
     </section>
   )

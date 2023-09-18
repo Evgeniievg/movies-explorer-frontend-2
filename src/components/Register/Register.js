@@ -13,6 +13,8 @@ export default function Register() {
       buttonText="Зарегистрироваться"
       question="Уже зарегистрированы?"
       linkText="Войти"
+      inputMinLength={[2, 2, 8]}
+      inputMaxLength={[30, 256, 30]}
     />
   );
 }

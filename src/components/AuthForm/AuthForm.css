@@ -1,10 +1,10 @@
 .auth-form{
-  margin: auto;
-  max-width: 400px;
+  width: 400px;
   padding-top: 70px;
   padding-bottom: 70px;
   display: flex;
   flex-direction: column;
+  align-self: center;
 }
 
 .auth-form__logo{
@@ -48,6 +48,11 @@
   margin-bottom: 25px;
   height: 25px;
   padding: 0;
+}
+
+.auth-form__input:focus{
+  outline: none;
+  border-bottom: #3456F3 solid 1px;
 }
 
 .auth-form__button{

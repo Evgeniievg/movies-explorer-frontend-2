@@ -1,18 +1,31 @@
-.search-movie{
-  border-bottom: 1px #E8E8E8 solid;
-  padding-bottom: 10px;
+.search-movie:not(:focus-within){
 }
 
 .search-movie__form{
   display: flex;
+  flex-direction: column;
+}
+
+.search-movie__content{
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  gap: 10px;
+  padding-bottom: 10px;
+}
+.search-movie__content:not(:focus-within){
+  border-bottom: 1px #E8E8E8 solid;
 }
 
 .search-movie__input{
   border: none;
   height: 35px;
   width: 100%;
+}
+
+.search-movie__input:focus {
+  padding-bottom: 10px;
+  outline: none;
+  border-bottom: #3456F3 solid 1px;
 }
 
 .search-movie__input::placeholder{
@@ -29,6 +42,12 @@
   padding: 8px 12px;
   border: none;
   border-radius: 50px;
+  cursor: pointer;
+  transition: all ease .3s;
+}
+
+.search-movie__button:hover{
+  opacity: .8;
 }
 
 @media screen and (max-width: 550px) {

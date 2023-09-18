@@ -17,7 +17,7 @@
   cursor: pointer;
   outline: none;
   -webkit-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  transition: all .3s ease-in-out;
 }
 
 .filter-checkbox__input:checked{
@@ -41,6 +41,12 @@
 .filter-checkbox__input:checked:after{
   left: calc(100% - 1.5em);
 }
+
+
+.filter-checkbox__input:hover{
+  opacity: .8;
+}
+
 
 .filter-checkbox__title{
   font-size: 13px;

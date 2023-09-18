@@ -11,6 +11,8 @@
 .movies-card__cover{
   margin-bottom: 10px;
   width: 100%;
+  object-fit: cover;
+  cursor: pointer;
 }
 
 .movies-card__button{

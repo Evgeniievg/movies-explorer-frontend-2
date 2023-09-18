@@ -12,7 +12,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import PageNotFound from '../PageNotFound/PageNotFound';
 
 function App() {
-  const [isLoggedin, setLoggedin] = useState(false);
+  const [isLoggedin, setLoggedin] = useState(true);
   return (
     <div className="app">
       <Routes>

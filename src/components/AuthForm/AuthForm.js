@@ -9,7 +9,7 @@ export default function AuthForm(props) {
   const buttonClassName = `auth-form__button ${isLogin ? 'auth-form__button_type_login' : ''}`
 
   return (
-    <section className='auth-form'>
+    <main className='auth-form'>
       <Link to='/'>
         <img src={mainLogo} alt='Логотип Movie Explorer' className='auth-form__logo'/>
       </Link>
@@ -18,7 +18,7 @@ export default function AuthForm(props) {
         {props.inputLabels.map((label, index) => (
           <div key={index} className='auth-form__inputs'>
             <label className='auth-form__label'>{label}</label>
-            <input className='auth-form__input' type={props.inputTypes[index]} />
+            <input required minLength={props.inputMinLength[index]} maxLength={props.inputMaxLength[index]} className='auth-form__input' type={props.inputTypes[index]} />
           </div>
         ))}
         <button type='submit' className={buttonClassName}>{props.buttonText}</button>
@@ -26,6 +26,6 @@ export default function AuthForm(props) {
       <p className='auth-form__text'>{props.question}&nbsp;
         <Link to={location.pathname === '/signin' ? '/signup' : '/signin'} className='auth-form__link'>{props.linkText}</Link>
       </p>
-    </section>
+    </main>
   );
 }

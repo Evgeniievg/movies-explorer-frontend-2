@@ -18,13 +18,13 @@ export default function MoviesCardList() {
   };
 
   return (
-    <section className='movies-list'>
-      <div className='movies-list__cards'>{cardElements}</div>
+    <div className='movies-list'>
+      <ul className='movies-list__cards'>{cardElements}</ul>
       {visibleCardCount < initialCardCount && (
-        <button className="movies-list__button" onClick={loadMore}>
+        <button type='button' className="movies-list__button" onClick={loadMore}>
           Еще
         </button>
       )}
-    </section>
+    </div>
   );
 }

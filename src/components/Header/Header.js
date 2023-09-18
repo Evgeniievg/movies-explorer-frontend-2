@@ -9,7 +9,7 @@ export default function Header(props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
-  const headerClassName = `header ${!isHomePage ? 'header__type_white' : ''}`;
+  const headerClassName = `header ${!isHomePage ? 'header_type_white' : ''}`;
   const headerLinkClassName = `header__link ${!isHomePage ? 'header__link_type_black' : ''}`;
   const headerProfileClassName = `header__profile ${!isHomePage ? 'header__profile_type_white' : ''}`;
   const headerBurderLineClassName = `header__burger-line ${!isHomePage ? 'header__burger-line_type_black' : ''}`;
@@ -30,29 +30,29 @@ export default function Header(props) {
         </Link>
         {props.isLoggedin ? (
           <>
-            <div className={`header__burger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
+            <button type='button' className={`header__burger ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
               <span className={headerBurderLineClassName}></span>
               <span className={headerBurderLineClassName}></span>
               <span className={headerBurderLineClassName}></span>
-            </div>
+            </button>
             {/* Используем компонент MobileMenu */}
             <MobileMenu isOpen={isMenuOpen} onClose={toggleMenu} />
           </>
         ) : (
           <>
-            <div className='header__links-mobile'>
+            <nav className='header__links-mobile'>
               <Link to='signup' className='header__link-mobile'>
                 Регистрация
               </Link>
               <Link to='signin' className='header__link-mobile header__link-mobile_type_green'>
                 Войти
               </Link>
-            </div>
+            </nav>
           </>
         )}
         {props.isLoggedin ? (
           <>
-            <div className='header__links'>
+            <nav className='header__links'>
               <Link to='/movies' className={`${headerLinkClassName} ${isActive('/movies')}`}>
                 Фильмы
               </Link>
@@ -62,21 +62,21 @@ export default function Header(props) {
               >
                 Сохраненные фильмы
               </Link>
-            </div>
+            </nav>
             <Link to='/profile' className={headerProfileClassName}>
               <span className='header__profile-link'>Аккаунт</span>
               <img src={profileIcon} alt='Иконка профиля' className='header__profile-logo' />
             </Link>
           </>
         ) : (
-          <div className='header__links'>
+          <nav className='header__links'>
             <Link to='signup' className='header__link'>
               Регистрация
             </Link>
             <Link to='signin' className='header__link header__link_type_green'>
               Войти
             </Link>
-          </div>
+          </nav>
         )}
       </div>
     </header>

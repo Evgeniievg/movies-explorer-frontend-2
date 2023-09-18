@@ -9,6 +9,7 @@
   font-size: 22px;
   margin: 0;
   margin-bottom: 23px;
+  letter-spacing: -0.4px;
 }
 
 .about-project__info{
@@ -19,6 +20,7 @@
   padding-top: 70px;
   margin: 0;
   justify-content: space-between;
+  gap: 10px;
 }
 
 .about-project__block{
@@ -29,6 +31,7 @@
   font-size: 20px;
   font-weight: 400;
   margin: 0;
+  letter-spacing: -0.4px;
 }
 
 .about-project__text{
@@ -70,20 +73,21 @@
 
 @media screen and (max-width: 768px) {
   .about-project{
-    padding: 90px 50px 110px 50px;
+    padding: 90px 50px 90px 50px;
   }
   .about-project__text{
     font-size: 12px;
   }
   .about-project__schedule{
     margin-top: 95px;
+    grid-template-columns: 140px 1fr;
   }
 }
 
 @media screen and (max-width: 550px) {
   .about-project{
     max-width: 90%;
-    padding: 70px 0 70px 0;
+    padding: 73px 0 70px 0;
   }
   .about-project__title{
     font-size: 18px;
@@ -97,11 +101,12 @@
   }
   .about-project__info{
     flex-direction: column;
-    padding-top: 0;
+    padding-top: 8px;
+    gap: 7px;
   }
   .about-project__subtitle{
     font-size: 18px;
-    margin-top: 60px;
+    margin-top: 52px;
   }
   .about-project__text{
     font-size: 11px;
