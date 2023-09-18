@@ -35,7 +35,6 @@ export default function Header(props) {
               <span className={headerBurderLineClassName}></span>
               <span className={headerBurderLineClassName}></span>
             </button>
-            {/* Используем компонент MobileMenu */}
             <MobileMenu isOpen={isMenuOpen} onClose={toggleMenu} />
           </>
         ) : (
