@@ -18,7 +18,7 @@ export default function AuthForm(props) {
         {props.inputLabels.map((label, index) => (
           <div key={index} className='auth-form__inputs'>
             <label className='auth-form__label'>{label}</label>
-            <input required minLength={props.inputMinLength[index]} maxLength={props.inputMaxLength[index]} className='auth-form__input' type={props.inputTypes[index]} />
+            <input required placeholder={props.inputPlaceholders[index]} minLength={props.inputMinLength[index]} maxLength={props.inputMaxLength[index]} className='auth-form__input' type={props.inputTypes[index]} />
           </div>
         ))}
         <button type='submit' className={buttonClassName}>{props.buttonText}</button>

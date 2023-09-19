@@ -7,8 +7,7 @@
 .movies-list__cards{
   display: flex;
   flex-wrap: wrap;
-  row-gap: 40px;
-  column-gap: 20px;
+  row-gap: 35px;
   justify-content: space-between;
   padding: 0;
 }
@@ -37,15 +36,18 @@
      padding-top: 80px;
   }
   .movies-list__cards{
-    row-gap: 35px;
+    row-gap: 27px;
   }
 }
 
 @media screen and (max-width: 550px) {
   .movies-list{
-    padding-top: 40px;
+    padding-top: 43px;
  }
   .movies-list__button{
     width: 240px;
+  }
+  .movies-list__cards{
+    row-gap: 32px;
   }
 }

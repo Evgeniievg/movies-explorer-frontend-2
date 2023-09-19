@@ -52,7 +52,7 @@
   color: #fff;
   text-decoration: none;
   font-weight: 500;
-  margin: 82px 0 75px 0;
+  margin: 82px 0 76px 0;
   background: transparent;
   border: 1px solid #fff;
   border-radius: 3px;
@@ -70,7 +70,7 @@
 @media screen and (max-width: 768px) {
   .promo__wrapper{
     max-width: 90%;
-    padding: 140px 0 0 0;
+    padding: 135px 0 0 0;
   }
   .promo__content{
     flex-direction: column;
@@ -82,7 +82,7 @@
   }
   .promo__title{
     font-size: 40px;
-    padding: 40px 0 22px 0;
+    padding: 45px 0 22px 0;
     line-height: 50px;
   }
   .promo__subtitle{
@@ -92,7 +92,7 @@
   .promo__link{
     align-self: center;
     font-size: 12px;
-    margin: 95px 0 75px 0;
+    margin: 95px 0 77px 0;
   }
 
 }
@@ -116,6 +116,6 @@
     text-align: center;
   }
   .promo__link{
-    margin: 80px 0 32px 0;
+    margin: 82px 0 31px 0;
   }
 }

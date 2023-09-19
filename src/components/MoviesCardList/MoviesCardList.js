@@ -9,7 +9,7 @@ export default function MoviesCardList() {
 
   const cardElements = [];
   for (let i = 0; i < visibleCardCount; i++) {
-    cardElements.push(<MoviesCard key={i} />);
+    cardElements.push(<MoviesCard title='33 слова о дизайне' key={i} />);
   }
 
   const loadMore = () => {
@@ -18,13 +18,13 @@ export default function MoviesCardList() {
   };
 
   return (
-    <div className='movies-list'>
+    <section className='movies-list'>
       <ul className='movies-list__cards'>{cardElements}</ul>
       {visibleCardCount < initialCardCount && (
         <button type='button' className="movies-list__button" onClick={loadMore}>
           Еще
         </button>
       )}
-    </div>
+    </section>
   );
 }

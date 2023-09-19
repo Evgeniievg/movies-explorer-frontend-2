@@ -14,7 +14,7 @@
 .footer__content{
   display: flex;
   border-top: 1px solid #E8E8E8;
-  padding-top: 25px;
+  padding-top: 20px;
   margin-top: 20px;
   max-width: 1140px;
   justify-content: space-between;
@@ -49,6 +49,9 @@
   opacity: .7;
 }
 @media screen and (max-width: 768px) {
+  .footer{
+    padding: 55px 30px 20px 30px;
+  }
   .footer__content{
     padding-top: 20px;
   }

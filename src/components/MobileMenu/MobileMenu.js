@@ -10,7 +10,7 @@ export default function MobileMenu({ isOpen, onClose }) {
   };
 
   return (
-    <div className={`overlay ${isOpen ? 'open' : ''}`}>
+    <div className={`overlay ${isOpen ? 'activated' : ''}`}>
       <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
         <button type='button' className='mobile-menu__close-button' onClick={onClose}></button>
         <nav className='mobile-menu__links'>

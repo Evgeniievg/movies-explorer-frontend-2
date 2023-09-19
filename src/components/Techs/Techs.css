@@ -12,8 +12,8 @@
   font-weight: 400;
   font-size: 22px;
   margin: 0;
-  margin-bottom: 23px;
-  letter-spacing: -0.4px;
+  margin-bottom: 25px;
+  letter-spacing: -1px;
 }
 
 .techs__content{
@@ -40,7 +40,7 @@
   text-align: center;
   margin-top: 26px;
   line-height: 20px;
-  letter-spacing: -0.4px;
+  letter-spacing: -0.5px;
 }
 
 .techs__list{
@@ -100,6 +100,7 @@
   .techs__title{
     font-size: 18px;
     margin-bottom: 30px;
+    letter-spacing: -0.3px;
   }
   .techs__subtitle{
     font-size: 30px;
