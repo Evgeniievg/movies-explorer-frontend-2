@@ -1,0 +1,6 @@
+.app{
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  justify-content: center;
+}
