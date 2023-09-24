@@ -20,7 +20,6 @@ export default function Register({ handleRegister }) {
   const inputTypes = ["text", "email", "password"];
   const inputPlaceholders = ["Ваше имя", "Ваш email", "Ваш пароль"];
   const inputNames = ['name', 'email', 'password'];
-  const [registrationError, setRegistrationError] = useState('');
 
   useEffect(() => {
     const isFormValid = Object.values(formErrors).every((error) => error === '') &&

@@ -83,7 +83,7 @@ function App() {
         setPopupOpen(true);
       })
       .catch((error) => {
-        console.error('Registration Error:', error);
+        console.error('Ошибка регистрации:', error);
       });
   };
 
@@ -95,7 +95,7 @@ function App() {
         navigate('/movies');
       })
       .catch((error) => {
-        console.error('Login Error:', error);
+        console.error('Ошибка логина:', error);
       });
   };
 

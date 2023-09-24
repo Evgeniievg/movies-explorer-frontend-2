@@ -55,7 +55,7 @@ export default function MoviesCard({ movie, saveStatus }) {
         setIsLiked(true);
       })
       .catch((error) => {
-        console.error('Error liking movie:', error);
+        console.error('Ошибка в сохранении фильма:', error);
       });
   };
 
