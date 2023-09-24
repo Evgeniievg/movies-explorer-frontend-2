@@ -7,4 +7,5 @@ https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/light-1?type=design&node-id=89
 https://explorer-movies.nomoredomainsrocks.ru/saved-movies
 
 ## Ссылка на пул реквест:
+https://github.com/Evgeniievg/movies-explorer-frontend-2/pull/2
 
