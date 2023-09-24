@@ -1,13 +1,78 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './SavedMovies.css';
 import SearchMovie from '../SearchMovie/SearchMovie';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import Preloader from '../Preloader/Preloader';
 
 export default function SavedMovies() {
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [isNotFound, setIsNotFound] = useState(false);
+  const [isShortFilm, setIsShortFilm] = useState(false);
+  const [originalFilms, setOriginalFilms] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const { savedMovies } = useContext(CurrentUserContext);
+
+  useEffect(() => {
+    setIsLoading(true);
+    setFilteredMovies(savedMovies);
+    setOriginalFilms(savedMovies);
+    setIsLoading(false);
+  }, [savedMovies]);
+
+  const handleSearchMovies = (keyword) => {
+    if (!keyword) {
+      return;
+    }
+
+    setIsLoading(true);
+
+    const filteredMovies = savedMovies.filter((movie) =>
+      movie.nameRU.toLowerCase().includes(keyword.toLowerCase()) ||
+      movie.nameEN.toLowerCase().includes(keyword.toLowerCase())
+    );
+
+    if (isShortFilm) {
+      const shortMovies = filteredMovies.filter((movie) => movie.duration <= 40);
+      setFilteredMovies(shortMovies);
+    } else {
+      setFilteredMovies(filteredMovies);
+      setOriginalFilms(filteredMovies);
+    }
+
+    if (filteredMovies.length === 0) {
+      setIsNotFound(true);
+    } else {
+      setIsNotFound(false);
+    }
+
+    setIsLoading(false);
+  };
+
+  const handleCheckbox = () => {
+    if (isShortFilm) {
+      const shortMovies = filteredMovies.filter((movie) => movie.duration <= 40);
+      setFilteredMovies(shortMovies);
+    } else {
+      setFilteredMovies(originalFilms);
+    }
+  };
+
   return (
     <main className='saved-movies'>
-      <SearchMovie />
-      <MoviesCardList />
+      <SearchMovie
+        notFound={isNotFound}
+        handleNotFound={setIsNotFound}
+        handleSearch={handleSearchMovies}
+        onFilterChange={setIsShortFilm}
+        shortFilm={isShortFilm}
+        handleCheckbox={handleCheckbox}
+      />
+      {isLoading ? (
+        <Preloader />
+      ) : (
+        <MoviesCardList movies={filteredMovies} />
+      )}
     </main>
-  )
+  );
 }

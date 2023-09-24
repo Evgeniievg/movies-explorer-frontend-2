@@ -1,7 +1,9 @@
 .movies-list{
   display: flex;
   flex-direction: column;
-  padding-top: 65px;
+  padding: 65px 40px 100px 40px;
+  max-width: 1140px;
+  margin: auto;
 }
 
 .movies-list__cards{
