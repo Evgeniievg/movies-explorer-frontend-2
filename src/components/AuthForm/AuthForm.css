@@ -4,7 +4,7 @@
   padding-bottom: 70px;
   display: flex;
   flex-direction: column;
-  align-self: center;
+  margin: auto;
 }
 
 .auth-form__logo{
