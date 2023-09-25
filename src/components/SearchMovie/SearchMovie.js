@@ -32,7 +32,13 @@ export default function SearchMovie({
   }
 
   useEffect(() => {
-    handleSearch(inputValue);
+    if(location.pathname === '/movies'){
+      handleSearch(inputValue);
+    }
+    else {
+      handleSearch(savedMoviesInputValue, shortFilm);
+
+    }
   }, [shortFilm]);
 
   const handleSubmit = (event) => {
@@ -56,7 +62,7 @@ export default function SearchMovie({
           <input onChange={handleInput} value={location.pathname === '/movies' ? inputValue : savedMoviesInputValue} placeholder='Фильм' className='search-movie__input'/>
           <button type='submit' className='search-movie__button'>Найти</button>
         </div>
-        <FilterCheckbox onChange={onFilterChange} />
+        <FilterCheckbox handleSearch={handleSearch} onChange={onFilterChange} />
         <span className={errorTextClass}>Нужно ввести ключевое слово</span>
         <span className={notFoundTextClass}>Ничего не найдено</span>
         {isError ?

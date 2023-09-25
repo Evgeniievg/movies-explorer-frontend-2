@@ -11,28 +11,24 @@ export default function SavedMovies() {
   const [isShortFilm, setIsShortFilm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { savedMovies } = useContext(CurrentUserContext);
-  const [searchWord, setSearchWord] = useState('')
+  const [searchWord, setSearchWord] = useState('');
 
   useEffect(() => {
     setIsLoading(true);
     setFilteredMovies(savedMovies);
-    handleSearchMovies(searchWord)
+    handleSearchMovies(searchWord, isShortFilm)
     setIsLoading(false);
   }, [savedMovies]);
 
-  const handleSearchMovies = (keyword) => {
-    if (!keyword) {
-      return;
-    }
+  const handleSearchMovies = (keyword, shortFilm) => {
     setSearchWord(keyword)
-    setIsLoading(true);
 
     const filteredMovies = savedMovies.filter((movie) =>
       movie.nameRU.toLowerCase().includes(keyword.toLowerCase()) ||
       movie.nameEN.toLowerCase().includes(keyword.toLowerCase())
     );
 
-    if (isShortFilm) {
+    if (shortFilm) {
       const shortMovies = filteredMovies.filter((movie) => movie.duration <= 40);
       setFilteredMovies(shortMovies);
     } else {
@@ -48,14 +44,6 @@ export default function SavedMovies() {
     setIsLoading(false);
   };
 
-  const handleCheckbox = () => {
-    if (isShortFilm) {
-      const shortMovies = filteredMovies.filter((movie) => movie.duration <= 40);
-      setFilteredMovies(shortMovies);
-    } else {
-    }
-  };
-
   return (
     <main className='saved-movies'>
       <SearchMovie
@@ -64,7 +52,6 @@ export default function SavedMovies() {
         handleSearch={handleSearchMovies}
         onFilterChange={setIsShortFilm}
         shortFilm={isShortFilm}
-        handleCheckbox={handleCheckbox}
       />
       {isLoading ? (
         <Preloader />
