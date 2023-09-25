@@ -1,0 +1,138 @@
+.auth-form{
+  width: 400px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.auth-form__logo{
+  width: 38px;
+  height: 38px;
+  transition: all ease .3s;
+}
+
+.auth-form__logo:hover{
+  opacity: .8;
+}
+
+.auth-form__title{
+  font-size: 24px;
+  font-weight: 500;
+  margin: 40px 0 40px 0;
+}
+
+.auth-form__form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.auth-form__inputs{
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form__label{
+  margin: 0;
+  margin-bottom: 5px;
+  color: #A0A0A0;
+  font-size: 10px;
+  margin-top: 20px;
+  font-weight: 400;
+}
+
+.auth-form__input{
+  border: 0px;
+  border-bottom: 1px solid #E8E8E8;
+  height: 25px;
+  padding: 0;
+}
+
+.auth-form__input:focus{
+  outline: none;
+  border-bottom: #3456F3 solid 1px;
+}
+
+.auth-form__button{
+  margin-top: 135px;
+  background-color: #3456F3;
+  height: 45px;
+  border: 0;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all ease .3s;
+}
+
+.auth-form__button_type_disabled{
+  background-color: #F8F8F8;
+  color: #C2C2C2;
+  cursor: auto;
+}
+
+.auth-form__button:hover{
+  opacity: .8;
+}
+
+.auth-form__button_type_disabled:hover{
+  opacity: 1;
+}
+
+.auth-form__button_type_login{
+  margin-top: 200px;
+}
+
+.auth-form__text{
+  margin: 0;
+  margin-top: 16px;
+  color: #A0A0A0;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.auth-form__link{
+  color: #3456F3;
+  text-decoration: none;
+  transition: all ease .3s;
+}
+
+.auth-form__link:hover{
+  opacity: .8;
+}
+
+.auth-form__error{
+  font-weight: 400;
+  font-size: 10px;
+  color: #FF3055;
+  margin: 0;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 550px) {
+  .auth-form{
+    max-width: 80%;
+    align-items: center;
+  }
+  .auth-form__title{
+    text-align: center;
+    margin: 45px 0 85px 0;
+
+  }
+  .auth-form__button{
+    margin-top: 220px;
+  }
+  .auth-form__button_type_login{
+    margin-top: 285px;
+  }
+  .auth-form__text{
+    font-size: 12px;
+  }
+
+}
+
+

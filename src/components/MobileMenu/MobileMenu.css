@@ -1,0 +1,132 @@
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  z-index: -1;
+  opacity: 0;
+}
+
+.overlay.activated{
+  opacity: 1;
+  z-index: 5;
+}
+
+.mobile-menu {
+  position: fixed;
+  background-color: #fff;
+  width: 0;
+  height: 100vh;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  transition: width 0.3s ease-in-out;
+  z-index: 5;
+}
+
+.mobile-menu.open {
+  width: 67%;
+  background-size: cover;
+}
+
+.mobile-menu__links{
+  display: flex;
+  flex-direction: column;
+  padding-top: 105px;
+  text-align: center;
+  gap: 30px;
+}
+
+.mobile-menu__link{
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  transition: all ease .3s;
+}
+
+.mobile-menu__link:hover{
+  opacity: .7;
+}
+
+.mobile-menu__link.active {
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  text-decoration-thickness: 2px;
+}
+.mobile-menu__profile{
+  border-radius: 40px;
+  display: flex;
+  width: 100px;
+  height: 35px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  text-decoration: none;
+  background-color: #fff;
+  box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
+  align-self: center;
+  margin-top: 620px;
+  transition: all ease .3s;
+}
+
+.mobile-menu__profile-link{
+  color: #000;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  margin: 0;
+}
+
+.mobile-menu__profile-logo{
+  background-color: #FFFFFF;
+  padding: 7px;
+  border-radius: 50px;
+}
+
+.mobile-menu__profile:hover{
+  opacity: .7;
+}
+
+.mobile-menu__close-button{
+  align-self: flex-end;
+  margin: 22px 5% 0 0;
+  padding: 15px;
+  background-position: center;
+  background-color: transparent;
+  border: none;
+  background-image: url('../../images/close-button.svg');
+  cursor: pointer;
+  transition: all ease .3s;
+}
+
+.mobile-menu__close-button:hover{
+  opacity: .7;
+}
+
+@media screen and (min-width: 769px) {
+  .mobile-menu {
+    display: none;
+  }
+  .overlay{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .mobile-menu.open {
+    width: 100%;
+  }
+  .mobile-menu__links{
+    gap: 25px;
+  }
+
+  .mobile-menu__profile{
+    margin-top: 440px;
+  }
+}

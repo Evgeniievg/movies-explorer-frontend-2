@@ -1,0 +1,125 @@
+.about-project{
+  margin: auto;
+  max-width: 1140px;
+  padding: 110px 50px 110px 50px;
+}
+
+.about-project__title{
+  font-weight: 400;
+  font-size: 22px;
+  margin: 0;
+  margin-bottom: 25px;
+  letter-spacing: -1px;
+}
+
+.about-project__info{
+  list-style: none;
+  display: flex;
+  border-top: 1px solid #000;
+  padding: 0;
+  padding-top: 70px;
+  margin: 0;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.about-project__block{
+  max-width: 550px;
+}
+
+.about-project__subtitle{
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.8px;
+}
+
+.about-project__text{
+  font-size: 14px;
+  margin: 0;
+  margin-top: 26px;
+  line-height: 20px;
+}
+
+.about-project__schedule{
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  grid-template-rows: 35px;
+  margin-top: 110px;
+}
+
+.about-project__text_type_schedule-text{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-project__text_type_green-background{
+  background-color: #2BE080;
+  margin-top: 0;
+}
+
+.about-project__text_type_grey-background{
+  background-color: #F2F2F2;
+  margin-top: 0;
+}
+
+.about-project__text_type_technologies{
+  margin-top: 14px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #A0A0A0;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project{
+    padding: 90px 50px 90px 50px;
+  }
+  .about-project__info{
+    gap: 40px;
+  }
+  .about-project__text{
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .about-project__schedule{
+    margin-top: 92px;
+    grid-template-columns: 140px 1fr;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .about-project{
+    max-width: 90%;
+    padding: 71px 0 78px 0;
+  }
+  .about-project__title{
+    font-size: 18px;
+    margin: 0;
+    margin-bottom: 28px;
+    letter-spacing: -0.4px;
+  }
+  .about-project__schedule{
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: 50px;
+    margin-top: 48px;
+  }
+  .about-project__info{
+    flex-direction: column;
+    padding-top: 8px;
+    gap: 7px;
+  }
+  .about-project__subtitle{
+    font-size: 18px;
+    margin-top: 53px;
+  }
+  .about-project__text{
+    font-size: 11px;
+    margin: 0;
+    margin-top: 15px;
+    line-height: 16px;
+  }
+  .about-project__text_type_technologies{
+    margin-top: 8px;
+  }
+}
