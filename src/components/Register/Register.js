@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import AuthForm from '../AuthForm/AuthForm';
+import { emailValidation, nameValidation } from '../../utils/constants';
 
 export default function Register({ handleRegister }) {
+  const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,12 +33,13 @@ export default function Register({ handleRegister }) {
   }, [formData, formErrors]);
 
   const validateEmail = (email) => {
-    const regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+    const regex = emailValidation;
     return regex.test(email);
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    setIsLoading(true)
 
     const isFormValid = Object.values(formErrors).every((error) => error === '') &&
       formData.name !== '' &&
@@ -62,7 +65,7 @@ export default function Register({ handleRegister }) {
         setFormErrors({ ...formErrors, [name]: '' });
       }
     } else if (name === 'name') {
-      if (!/^[A-Za-zА-Яа-яЁё\s-]*$/.test(value)) {
+      if (!nameValidation.test(value)) {
         setFormErrors({ ...formErrors, [name]: 'Имя должно содержать только латиницу, кириллицу, пробел или дефис' });
       } else if (value.length < 2 || value.length > 30) {
         setFormErrors({ ...formErrors, [name]: 'Имя должно содержать от 2 до 30 символов' });
@@ -94,6 +97,7 @@ export default function Register({ handleRegister }) {
       onChange={handleInputChange}
       formErrors={formErrors}
       isButtonDisabled={isButtonDisabled}
+      isLoading={isLoading}
     />
   );
 }

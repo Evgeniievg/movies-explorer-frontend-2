@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import AuthForm from '../AuthForm/AuthForm';
+import { emailValidation } from '../../utils/constants';
 
 export default function Login({ handleLogin }) {
+  const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -28,12 +30,13 @@ export default function Login({ handleLogin }) {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const validateEmail = (email) => {
-    const regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+    const regex = emailValidation;
     return regex.test(email);
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    setIsLoading(true);
     handleLogin(formData.email, formData.password);
   };
 
@@ -74,6 +77,7 @@ export default function Login({ handleLogin }) {
       onChange={handleInputChange}
       formErrors={formErrors}
       isButtonDisabled={isButtonDisabled}
+      isLoading={isLoading}
     />
   )
 }

@@ -25,13 +25,14 @@ export default function AuthForm(props) {
               maxLength={props.inputMaxLength[index]}
               className='auth-form__input'
               type={props.inputTypes[index]}
+              disabled={props.isLoading ? true : false}
             />
              {props.formErrors[props.inputNames[index]] && (
                 <span className='auth-form__error'>{props.formErrors[props.inputNames[index]]}</span>
               )}
           </div>
         ))}
-        <button type='submit' className={`${buttonClassName} ${props.isButtonDisabled ? 'auth-form__button_type_disabled' : ''}`}>{props.buttonText}</button>
+        <button type='submit' className={`${buttonClassName} ${props.isLoading ? 'auth-form__button_type_disabled' : ''} ${props.isButtonDisabled ? 'auth-form__button_type_disabled' : ''}`}>{props.buttonText}</button>
       </form>
       <p className='auth-form__text'>{props.question}&nbsp;
         <Link to={location.pathname === '/signin' ? '/signup' : '/signin'} className='auth-form__link'>{props.linkText}</Link>

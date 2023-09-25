@@ -48,10 +48,6 @@
   background-image: url('../../images/like-button-active.svg');
 }
 
-.movies-card__button_type_liked:hover{
-  background-image: url('../../images/dislike-button.svg');
-}
-
 .movies-card__button_type_saved{
   background-image: url('../../images/dislike-button.svg');
 }

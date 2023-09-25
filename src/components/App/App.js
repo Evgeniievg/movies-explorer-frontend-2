@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
@@ -23,18 +23,6 @@ function App() {
   const [isLoading, setLoading] = useState(true);
   const [isPopupOpen, setPopupOpen] = useState(false)
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (isLoggedin) {
-      mainApi.getSavedMovies()
-        .then((apiSavedMovies) => {
-          setSavedMovies(apiSavedMovies.data.filter((movie) => movie.owner === currentUser.data._id));
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [isLoggedin]);
 
   useEffect(() => {
     checkToken();
@@ -75,11 +63,23 @@ function App() {
       });
   }
 
+  useEffect(() => {
+    if (isLoggedin) {
+      mainApi.getSavedMovies()
+        .then((apiSavedMovies) => {
+          setSavedMovies(apiSavedMovies.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [isLoggedin]);
+
   const handleRegister = (name, email, password) => {
     mainApi
       .register(name, email, password)
       .then(() => {
-        navigate('/signin');
+        handleLogin(email, password)
         setPopupOpen(true);
       })
       .catch((error) => {
@@ -93,6 +93,7 @@ function App() {
       .then(() => {
         setLoggedin(true);
         navigate('/movies');
+        checkToken();
       })
       .catch((error) => {
         console.error('Ошибка логина:', error);
@@ -100,14 +101,14 @@ function App() {
   };
 
   return (
-    <CurrentUserContext.Provider value={{ currentUser, savedMovies, setSavedMovies }}>
+    <CurrentUserContext.Provider value={{ currentUser, setCurrentUser, savedMovies, setSavedMovies }}>
       <div className="app">
         {isLoading ? (
           <Preloader />
         ) : (
           <Routes>
-            <Route path="/signup" element={<Register handleRegister={handleRegister} />} />
-            <Route path="/signin" element={<Login handleLogin={handleLogin} />} />
+            <Route path="/signup" element={isLoggedin ? <Navigate to ='/movies'/> : <Register handleRegister={handleRegister} />} />
+            <Route path="/signin" element={isLoggedin ? <Navigate to='/movies'/> : <Login handleLogin={handleLogin} />} />
             <Route
               path="/profile"
               element={

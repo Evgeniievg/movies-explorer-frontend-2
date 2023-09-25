@@ -9,14 +9,14 @@ export default function SavedMovies() {
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [isNotFound, setIsNotFound] = useState(false);
   const [isShortFilm, setIsShortFilm] = useState(false);
-  const [originalFilms, setOriginalFilms] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { savedMovies } = useContext(CurrentUserContext);
+  const [searchWord, setSearchWord] = useState('')
 
   useEffect(() => {
     setIsLoading(true);
     setFilteredMovies(savedMovies);
-    setOriginalFilms(savedMovies);
+    handleSearchMovies(searchWord)
     setIsLoading(false);
   }, [savedMovies]);
 
@@ -24,7 +24,7 @@ export default function SavedMovies() {
     if (!keyword) {
       return;
     }
-
+    setSearchWord(keyword)
     setIsLoading(true);
 
     const filteredMovies = savedMovies.filter((movie) =>
@@ -37,7 +37,6 @@ export default function SavedMovies() {
       setFilteredMovies(shortMovies);
     } else {
       setFilteredMovies(filteredMovies);
-      setOriginalFilms(filteredMovies);
     }
 
     if (filteredMovies.length === 0) {
@@ -54,7 +53,6 @@ export default function SavedMovies() {
       const shortMovies = filteredMovies.filter((movie) => movie.duration <= 40);
       setFilteredMovies(shortMovies);
     } else {
-      setFilteredMovies(originalFilms);
     }
   };
 

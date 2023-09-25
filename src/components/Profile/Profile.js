@@ -4,6 +4,7 @@ import './Profile.css';
 import mainApi from '../../utils/MainApi';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import Preloader from '../Preloader/Preloader';
+import { emailValidation, nameValidation } from '../../utils/constants';
 
 export default function Profile({ onSignOut }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -27,6 +28,11 @@ export default function Profile({ onSignOut }) {
     }
   }, [userContext.currentUser]);
 
+  useEffect(() => {
+    handleCheckValues();
+  }, [name, email]);
+
+
   const validateName = (name) => {
     if (!name) {
       return 'Поле "Имя" не может быть пустым';
@@ -37,6 +43,9 @@ export default function Profile({ onSignOut }) {
     if (name.length > 30) {
       return 'Имя не может содержать более 30 символов';
     }
+    if(!nameValidation.test(name)) {
+      return 'Имя должно содержать только латиницу, кириллицу, пробел или дефис'
+    }
     return '';
   };
 
@@ -44,7 +53,7 @@ export default function Profile({ onSignOut }) {
     if (!email) {
       return 'Поле "E-mail" не может быть пустым';
     }
-    const regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+    const regex = emailValidation;
     return regex.test(email) ? '' : 'Email некорректен';
   };
 
@@ -61,7 +70,6 @@ export default function Profile({ onSignOut }) {
 
   const handleEmailChange = (event) => {
     const newEmail = event.target.value;
-
     setEmail(newEmail);
     const emailError = validateEmail(newEmail);
     setFormErrors({
@@ -87,11 +95,11 @@ export default function Profile({ onSignOut }) {
       .updateUser(updatedUserData)
       .then((updatedUser) => {
         setIsCongratsActive(true)
-        if (updatedUser && updatedUser.data) {
-          setName(updatedUser.data.name);
-          setEmail(updatedUser.data.email);
-          setTitle(updatedUser.data.name);
-        }
+        setName(updatedUser.data.name);
+        setEmail(updatedUser.data.email);
+        setTitle(updatedUser.data.name);
+        userContext.setCurrentUser(updatedUser);
+        setIsSaveButtonActive(false)
         setIsEditing(false);
       })
       .catch((error) => {
@@ -105,6 +113,12 @@ export default function Profile({ onSignOut }) {
         setIsLoading(false);
       });
   };
+
+  const handleCheckValues = () =>{
+    if(name === userContext.currentUser.data.name && email === userContext.currentUser.data.email) {
+      setIsSaveButtonActive(false);
+    }
+  }
 
   return (
     <main>

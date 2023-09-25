@@ -3,18 +3,7 @@ import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
 import mainApi from '../../utils/MainApi';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-
-function formatMovieDuration(duration) {
-  const hours = Math.floor(duration / 60);
-  const minutes = duration % 60;
-  if(hours) {
-    return `${hours}ч ${minutes}м`;
-  }
-  else{
-    return `${minutes}м`
-  }
-}
-
+import formatMovieDuration from '../../utils/constants';
 
 export default function MoviesCard({ movie, saveStatus }) {
   const location = useLocation();

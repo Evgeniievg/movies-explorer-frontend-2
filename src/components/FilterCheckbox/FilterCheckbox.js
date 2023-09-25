@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './FilterCheckbox.css';
 
 export default function FilterCheckbox({ onChange }) {
   const [isChecked, setIsChecked] = useState(false);
+  const [isSavedMoviesChecked, setIsSavedMoviesChecked] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const savedCheckbox = localStorage.getItem('isChecked');
@@ -11,13 +14,17 @@ export default function FilterCheckbox({ onChange }) {
     } else {
       setIsChecked(false);
     }
+
   }, []);
 
   const handleCheckboxChange = () => {
     const newCheckedValue = !isChecked;
     setIsChecked(newCheckedValue);
+    setIsSavedMoviesChecked(newCheckedValue)
     onChange(newCheckedValue);
-    localStorage.setItem('isChecked', newCheckedValue.toString());
+    if(location.pathname === '/movies') {
+      localStorage.setItem('isChecked', newCheckedValue.toString())
+    }
   };
 
   return (
@@ -26,7 +33,7 @@ export default function FilterCheckbox({ onChange }) {
         <input
           type="checkbox"
           className="filter-checkbox__input"
-          checked={isChecked}
+          checked={location.pathname === '/movies' ? isChecked : isSavedMoviesChecked}
           onChange={handleCheckboxChange}
         />
       </label>
